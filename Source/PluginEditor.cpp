@@ -13,9 +13,14 @@
 Ca808AudioProcessorEditor::Ca808AudioProcessorEditor (Ca808AudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    for (auto i = 0; i < 64; ++i)
+    {
+        cellVec.push_back (std::make_unique<Cell>());
+        addAndMakeVisible (*cellVec.back());
+    }
+    
+    grid.rows = 8;
+    setSize (400, 400);
 }
 
 Ca808AudioProcessorEditor::~Ca808AudioProcessorEditor()
@@ -25,16 +30,18 @@ Ca808AudioProcessorEditor::~Ca808AudioProcessorEditor()
 //==============================================================================
 void Ca808AudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    g.fillAll (juce::Colours::lightblue);
 }
 
 void Ca808AudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    const int gap = 40;
+    for (int i = 0; i < grid.rows; i ++)
+    {
+        for (int j = 0; j < grid.cols; j++)
+        {
+            cellVec[index]->setBounds(40 + i * gap, 40 + j * gap, gap, gap);
+            index++;
+        }
+    }
 }

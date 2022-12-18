@@ -10,10 +10,16 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "Cell.h"
 
 //==============================================================================
 /**
 */
+union Grid
+{
+    int rows, cols;
+};
+
 class Ca808AudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
@@ -25,8 +31,11 @@ public:
     void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+    Grid grid;
+    int numCells { 64 };
+    int index { 0 };
+    std::vector <std::unique_ptr<Cell>> cellVec;
+    
     Ca808AudioProcessor& audioProcessor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Ca808AudioProcessorEditor)
