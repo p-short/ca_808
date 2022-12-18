@@ -1,10 +1,10 @@
 # ca_808
 
-##Drum sequencer audio plugin that uses cellular automaton to create interesting patterns   
+## Drum sequencer audio plugin that uses cellular automaton to create interesting patterns   
 
 <ins>**Checklist**</ins>
 
-~~* Create interactive GUI grid.~~
+* ~~Create interactive GUI grid.~~
 
 * Create a comobobox so the user can select what ruleset you want to seed the CA with.
 
