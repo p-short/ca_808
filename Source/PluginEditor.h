@@ -32,8 +32,9 @@ public:
 
 private:
     Grid grid;
-    int numCells { 64 };
-    int index { 0 };
+    int cellIndex { 0 };
+    const int numCells { 64 };
+    const int cellArea { 40 };
     std::vector <std::unique_ptr<Cell>> cellVec;
     
     Ca808AudioProcessor& audioProcessor;

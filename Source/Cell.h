@@ -37,8 +37,8 @@ public:
     {
         myCell.setLookAndFeel (&cellLookAndFeel);
         //change the default background colour to white
-        cellLookAndFeel.setColour(juce::TextButton::ColourIds::buttonColourId, juce::Colours::white);
-        addAndMakeVisible(myCell);
+        cellLookAndFeel.setColour (juce::TextButton::ColourIds::buttonColourId, juce::Colours::white);
+        addAndMakeVisible (myCell);
     }
 
     ~Cell() override
@@ -58,7 +58,7 @@ public:
     //use method to change indervidual instances of cells background colours
     void changeCellBackgroundColour (int colourID, juce::Colour colour)
     {
-        cellLookAndFeel.setColour(colourID, colour);
+        cellLookAndFeel.setColour (colourID, colour);
     }
 
 private:
